@@ -1,5 +1,6 @@
 package produto;
 
+import java.io.InvalidObjectException;
 import java.util.ArrayList;
 
 /**
@@ -40,8 +41,12 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (int x = 0; x < produtos.size(); x++) {
+			if (((Produto) produtos.get(x)).getCodigo() == codigo) {
+				return x;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -51,26 +56,33 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (procurarIndice(codigo) == -1) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(Produto produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		this.produtos.add(produto);
 	}
 
 	/**
 	 * Atualiza um produto armazenado ou retorna um erro caso o produto nao
 	 * esteja no array. Note que, para localizacao, o código do produto será
 	 * utilizado.
+	 * @throws RuntimeException
 	 */
 	public void atualizar(Produto produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (!existe(produto.getCodigo())) {
+			throw new RuntimeException("Objeto não faz parte da lista de produtos!");
+		} else {
+			int posicao = procurarIndice(produto.getCodigo());
+			this.produtos.set(posicao, produto);
+		}
+
 	}
 
 	/**
@@ -79,10 +91,14 @@ public class RepositorioProdutoArrayList {
 	 * array.
 	 * 
 	 * @param codigo
+	 * @throws RuntimeException
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (!existe(codigo)) {
+			throw new RuntimeException("Objeto não faz parte da lista de produtos!");
+		} else {
+			this.produtos.remove(procurarIndice(codigo));
+		}
 	}
 
 	/**
@@ -91,9 +107,14 @@ public class RepositorioProdutoArrayList {
 	 * 
 	 * @param codigo
 	 * @return
+	 * @throws RuntimeException
 	 */
 	public Produto procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int indice = procurarIndice(codigo);
+		if (indice == -1) {
+			return null;
+		} else {
+			return (Produto) this.produtos.get(indice);
+		}
 	}
 }

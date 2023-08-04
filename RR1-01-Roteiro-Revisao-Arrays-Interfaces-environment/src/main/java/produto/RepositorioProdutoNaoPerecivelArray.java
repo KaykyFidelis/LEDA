@@ -20,29 +20,23 @@ public class RepositorioProdutoNaoPerecivelArray {
 	 */
 	private ProdutoNaoPerecivel[] produtos;
 
+	public ProdutoNaoPerecivel[] getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(ProdutoNaoPerecivel[] produtos) {
+		this.produtos = produtos;
+	}
+
 	/**
 	 * A posicao do ultimo elemento inserido no array de produtos. o valor
 	 * inicial é -1 para indicar que nenhum produto foi ainda guardado no array.
 	 */
-	private int index = -1;
+	//private int index = -1;
 
 	public RepositorioProdutoNaoPerecivelArray(int size) {
 		super();
 		this.produtos = new ProdutoNaoPerecivel[size];
-	}
-
-	/**
-	 * Recebe o codigo do produto e devolve o indice desse produto no array ou
-	 * -1 caso ele nao se encontre no array. Esse método é util apenas na
-	 * implementacao com arrays por questoes de localizacao. Outras classes que
-	 * utilizam outras estruturas internas podem nao precisar desse método.
-	 * 
-	 * @param codigo
-	 * @return
-	 */
-	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
 	}
 
 	/**

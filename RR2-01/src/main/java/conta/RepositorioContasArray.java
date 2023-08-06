@@ -78,8 +78,8 @@ public class RepositorioContasArray {
     }
   }
 
-  public Collection procurarContas(String cpfCliente){
-    Vector resp = new Vector();
+  public Collection<Conta> procurarContas(String cpfCliente){
+    Vector<Conta> resp = new Vector<Conta>();
 
     for (int i = 0; i < indice; i++) {
       if(contas[i].getCliente().getCpf().equals(cpfCliente)){

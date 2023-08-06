@@ -26,6 +26,7 @@ public class Vetor<T extends Comparable<T>> {
 	private Comparator<T> comparadorMaximo;
 	private Comparator<T> comparadorMinimo;
 
+	@SuppressWarnings("unchecked")
 	public Vetor(int tamanho) {
 		super();
 		this.tamanho = tamanho;

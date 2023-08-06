@@ -14,6 +14,7 @@ public class RepositorioProdutosArray<T extends Produto> implements
 	private T[] produtos;
 	private int index = -1;
 
+	@SuppressWarnings("unchecked")
 	public RepositorioProdutosArray(int size) {
 		super();
 		this.produtos = (T[]) new Object[size];

@@ -22,11 +22,19 @@ public class MetodosRecursivos {
 		return n * calcularFatorial(n - 1);
 	}
 
+	int um = 0;
+
 	public int calcularFibonacci(int n) {
-		if (n != 1 && n != 2) {
-			return calcularFibonacci(n - 1) + calcularFibonacci(n - 2);
+		if (n == 1 || n == 2) {
+			if (this.um < 2) {
+				System.out.println(1);
+				this.um += 1;
+			}
+			return 1;
 		}
-		return 1;
+		int saida = calcularFibonacci(n - 1) + calcularFibonacci(n - 2);
+		System.out.println(saida);
+		return saida;
 	}
 
 	public int countNotNull(Object[] array) {

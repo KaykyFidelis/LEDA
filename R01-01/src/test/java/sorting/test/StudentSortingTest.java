@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
-import sorting.simpleSorting.BubbleSort;
+import sorting.simpleSorting.InsertionSortRecursivo;
 
 public class StudentSortingTest {
 
@@ -37,7 +37,7 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
-		this.implementation = new BubbleSort<>();
+		this.implementation = new InsertionSortRecursivo<>();
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {
@@ -95,6 +95,45 @@ public class StudentSortingTest {
 	@Test
 	public void testSort05() {
 		genericTest(vetorValoresRepetidos);
+	}
+
+	@Test
+	public void testPartialSort01() {
+		Integer[] array = new Integer[] { 30, 28, 7, 4, 11, 26, 29, 22, 23, 31 };
+		Integer[] copyArray = Arrays.copyOf(vetorTamPar, vetorTamPar.length);
+		implementation.sort(copyArray, 3, 6);
+		Assert.assertArrayEquals(copyArray, array);
+	}
+
+	@Test
+	public void testPartialSort02() {
+		Integer[] array = new Integer[] { 6, 41, 32, 7, 26, 4, 11, 18, 37, 49, 36 };
+		Integer[] copyArray = Arrays.copyOf(vetorTamImpar, vetorTamImpar.length);
+		implementation.sort(copyArray, 6, 9);
+		Assert.assertArrayEquals(copyArray, array);
+	}
+
+	@Test
+	public void testPartialSort03() {
+		Integer[] array = new Integer[] { 4, 9, 3, 0, 1, 4, 4, 5 };
+		Integer[] copyArray = Arrays.copyOf(vetorValoresRepetidos, vetorValoresRepetidos.length);
+		implementation.sort(copyArray, 3, 7);
+		Assert.assertArrayEquals(copyArray, array);
+	}
+
+	@Test
+	public void testPartialSort04() {
+		// 0 1 2 3 4 5 6 7 8 9
+		Integer[] array = new Integer[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+		implementation.sort(array, 5, array.length - 1);
+		Assert.assertArrayEquals(array, new Integer[] { 10, 9, 8, 7, 6, 1, 2, 3, 4, 5 });
+		implementation.sort(array, 0, 4);
+		Assert.assertArrayEquals(array, new Integer[] { 6, 7, 8, 9, 10, 1, 2, 3, 4, 5 });
+
+		Integer[] copyArray = Arrays.copyOf(array, array.length);
+		Arrays.sort(copyArray);
+		implementation.sort(array, 0, array.length - 1);
+		Assert.assertArrayEquals(array, copyArray);
 	}
 
 	// MÉTODOS QUE OS ALUNOS PODEM CRIAR

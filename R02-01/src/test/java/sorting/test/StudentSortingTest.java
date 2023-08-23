@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
+import sorting.divideAndConquer.QuickSort;
 
 public class StudentSortingTest {
 
@@ -38,8 +39,7 @@ public class StudentSortingTest {
 	private void getImplementation() {
 		// TODO O aluno deve instanciar sua implementação abaixo ao invés de
 		// null
-		this.implementation = null;
-		Assert.fail("Implementation not provided");
+		this.implementation = new QuickSort<>();
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {
@@ -66,8 +66,8 @@ public class StudentSortingTest {
 
 	public void genericTest(Integer[] array) {
 		Integer[] copy1 = {};
-		if(array.length > 0){
-			copy1 = Arrays.copyOf(array, array.length);			
+		if (array.length > 0) {
+			copy1 = Arrays.copyOf(array, array.length);
 		}
 		implementation.sort(array);
 		Arrays.sort(copy1);

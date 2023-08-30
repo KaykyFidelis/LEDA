@@ -18,26 +18,17 @@ public class CountingSort extends AbstractSorting<Integer> {
 	@Override
 	public void sort(Integer[] array, int leftIndex, int rightIndex) {
 		if (leftIndex < rightIndex && leftIndex >= 0 && rightIndex < array.length) {
-			int[] frequencia = new int[array.length];
-
-			for (int i = leftIndex; i < rightIndex; i++) {
-				frequencia[array[i] - 1] += 1;
-			}
+			int min = array[leftIndex];
+			int max = array[rightIndex];
 			
-			for (int i = leftIndex + 1; i < rightIndex; i++) {
-				frequencia[i] += frequencia[i-1];
-			}
-
-			int[] ordenados = new int[array.length];
-
-			for (int i = rightIndex - 1; i >= leftIndex; i--) {
-				ordenados[frequencia[array[i] - 1] - 1] = array[i];
-				frequencia[array[i] - 1] -= 1;
-			}
-
 			for (int i = leftIndex; i < rightIndex; i++) {
-				array[i] = frequencia[i];
+				if(array[i] < min) {
+					min = array[i];
+				} else if (array[i] > max) {
+					max = array[i];
+				}
 			}
+			System.out.println(min + " " + max);
 		}
 	}
 }

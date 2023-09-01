@@ -24,13 +24,15 @@ public class RecursiveSelectionSort<T extends Comparable<T>> extends
 	}
 
 	private int menorIndice(T[] array, int currentIndex, int rightIndex, int nextIndex) {
-		if (nextIndex > rightIndex) {
-			return currentIndex;
-		}
-		if (array[nextIndex].compareTo(array[currentIndex]) < 0) {
-			return menorIndice(array, nextIndex, rightIndex, nextIndex + 1);
+		int menorIndice = currentIndex;
+		if (array[nextIndex].compareTo(array[currentIndex]) >= 0) {
+			menorIndice =  menorIndice(array, nextIndex, rightIndex, nextIndex + 1);
 		} else {
-			return menorIndice(array, currentIndex, rightIndex, nextIndex + 1);
+			menorIndice =  menorIndice(array, currentIndex, rightIndex, nextIndex + 1);
 		}
+		if (nextIndex > rightIndex) {
+			menorIndice =  currentIndex;
+		}
+		return menorIndice;
 	}
 }

@@ -32,18 +32,24 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 
 	private int partition(T[] array, int leftIndex, int rightIndex) {
 		medianOfThree(array, leftIndex, rightIndex);
-		T pivot = array[rightIndex - 1];
+		int pivot_partition = rightIndex;
+		int i = leftIndex + 1;
+		int j = rightIndex - 1;
 
-		int i = leftIndex;
-
-		for (int j = leftIndex; j < rightIndex; j++) {
-			if (array[j].compareTo(pivot) < 0) {
-				util.Util.swap(array, i, j);
-				i += 1;
+		while (i <= j) {
+			if (array[j].compareTo(array[pivot_partition]) > 0) {
+				j--;
+			} else {
+				if (array[pivot_partition].compareTo(array[i]) < 0) {
+					util.Util.swap(array, i, j);
+					j--;
+				} else {
+					i++;
+				}
 			}
 		}
 
-		util.Util.swap(array, i, rightIndex - 1);
+		util.Util.swap(array, i, pivot_partition);
 		return i;
 	}
 

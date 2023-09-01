@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
-import sorting.simpleSorting.InsertionSortRecursivo;
+import sorting.simpleSorting.BubbleSort;
 
 public class StudentSortingTest {
 
@@ -37,7 +37,7 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
-		this.implementation = new InsertionSortRecursivo<>();
+		this.implementation = new BubbleSort<>();
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {

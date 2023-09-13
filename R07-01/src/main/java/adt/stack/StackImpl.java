@@ -1,7 +1,7 @@
 package adt.stack;
 
 public class StackImpl<T> implements Stack<T> {
-
+	//null
 	private T[] array;
 	private int top;
 
@@ -13,32 +13,47 @@ public class StackImpl<T> implements Stack<T> {
 
 	@Override
 	public T top() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T retorno = null;
+		if(top != -1){
+			retorno = array[top];
+		}
+		return retorno;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		boolean retorno = true;
+		if (top != -1){
+			retorno = false;
+		}
+		return retorno;
 	}
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		boolean retorno = false;
+		if (top == array.length - 1){
+			retorno = true;
+		}
+		return retorno;
 	}
 
 	@Override
 	public void push(T element) throws StackOverflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(isFull()) {
+			throw new StackOverflowException();
+		}
+		array[++top] = element;
 	}
 
 	@Override
 	public T pop() throws StackUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (isEmpty()) {
+			throw new StackUnderflowException();
+		}
+		T topo = top();
+		array[top--] = null;
+		return topo;
 	}
 
 }

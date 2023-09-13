@@ -32,9 +32,9 @@ public class StudentQueueTest {
 
 	private void getImplementations() {
 		// TODO O aluno deve ajustar aqui para instanciar sua implementação
-		queue1 = null;
-		queue2 = null;
-		queue3 = null;
+		queue1 = new QueueImpl<Integer>(3);
+		queue2 = new QueueImpl<Integer>(2);
+		queue3 = new QueueImpl<Integer>(3);
 	}
 
 	// MÉTODOS DE TESTE
@@ -51,7 +51,7 @@ public class StudentQueueTest {
 
 	@Test
 	public void testIsFull() {
-		assertFalse(queue1.isFull());
+		assertFalse(queue3.isFull());
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class StudentQueueTest {
 
 	@Test(expected = QueueUnderflowException.class)
 	public void testDequeueComErro() throws QueueUnderflowException {
-		assertEquals(new Integer(1), queue1.dequeue()); // vai depender do
+		assertEquals(new Integer(1), queue3.dequeue()); // vai depender do
 														// tamanho que a fial
 														// foi iniciada!!!
 	}

@@ -2,66 +2,68 @@ package recursao;
 
 public class ExemplosRecursao {
 
-	//Calcular o numero de zeros em um array de inteiros
-	public int calcularZerosIterativo(int[] array){
+	// Calcular o numero de zeros em um array de inteiros
+	public int calcularZerosIterativo(int[] array) {
 		int zeros = 0;
 		for (int num : array) {
-			if(num == 0){
+			if (num == 0) {
 				zeros = zeros + 1;
 			}
 		}
 		return zeros;
 	}
-	
-	public int calcularZerosComRecursao(int[] array){
+
+	public int calcularZerosComRecursao(int[] array) {
 		return calcularZerosRecursivo(array, 0);
 	}
-	private int calcularZerosRecursivo(int[] array, int indice){
+
+	private int calcularZerosRecursivo(int[] array, int indice) {
 		int zeros = 0;
-		if(indice == array.length - 1){ //caso base: atingiu o ultimo elemento do array 
-			if(array[indice] == 0){
+		if (indice == array.length - 1) { // caso base: atingiu o ultimo elemento do array
+			if (array[indice] == 0) {
 				zeros = 1;
 			}
-		}else{ //caso recursivo
-			if(array[indice] == 0){
+		} else { // caso recursivo
+			if (array[indice] == 0) {
 				zeros = 1;
 			}
-			zeros = zeros + calcularZerosRecursivo(array, indice + 1); 
+			zeros = zeros + calcularZerosRecursivo(array, indice + 1);
 		}
 		return zeros;
 	}
-	
-	//calcular o valor minimo de um array de inteiros de forma iterativa
-	public int minimum(int[] array){
+
+	// calcular o valor minimo de um array de inteiros de forma iterativa
+	public int minimum(int[] array) {
 		int minimum = 0;
-		if(array.length > 0){
-			minimum = array[0]; //valor base a ser retornado
+		if (array.length > 0) {
+			minimum = array[0]; // valor base a ser retornado
 			for (int num : array) {
-				if(num < minimum){
-					minimum = num; //atualizacao do valor a ser retornado
+				if (num < minimum) {
+					minimum = num; // atualizacao do valor a ser retornado
 				}
 			}
 		}
 		return minimum;
 	}
-	
-	//calcular o valor minimo de um array de forma recursiva
-	public int minimumRecursive(int[] array){
+
+	// calcular o valor minimo de um array de forma recursiva
+	public int minimumRecursive(int[] array) {
 		int minimum = 0;
-		if(array.length > 0){
-			minimum = minimumRecursive(array,0);
+		if (array.length > 0) {
+			minimum = minimumRecursive(array, 0);
 		}
-		
+
 		return minimum;
-		
+
 	}
+
 	private int minimumRecursive(int[] array, int posicao) {
-		int minimum = array[0]; //valor base a ser retornado
-		if(posicao == array.length-1){ //caso base 
-			//nao faz nada porque minimum já guarda o valor a ser retornado
-		}else{
+		int minimum = array[0]; // valor base a ser retornado
+		if (posicao == array.length - 1) { // caso base
+			// nao faz nada porque minimum já guarda o valor a ser retornado
+		} else {
 			int proxMin = minimumRecursive(array, posicao + 1);
-			if(proxMin < minimum){
+			if (proxMin < minimum) {
 				minimum = proxMin;
 			}
 		}
@@ -69,55 +71,55 @@ public class ExemplosRecursao {
 		return minimum;
 	}
 
-
-	//calcular a soma dos k primeiro elementos
-	public int somaIterativa(int k){
-		int soma = 0; //elemento neutro da soma. valor do caso base a ser retornado
+	// calcular a soma dos k primeiro elementos
+	public int somaIterativa(int k) {
+		int soma = 0; // elemento neutro da soma. valor do caso base a ser retornado
 		for (int i = 1; i <= k; i++) {
 			soma = soma + k;
 		}
 		return soma;
 	}
-	
-	//calcular a soma dos k primeiro elementos
-	public int somaRecursiva(int k){
-		int soma = 0; //elemento neutro da soma
-		if( k == 0){ //caso base
-			//nao faz nada porque soma ja guarda o valro a ser retornado
-		}else{
+
+	// calcular a soma dos k primeiro elementos
+	public int somaRecursiva(int k) {
+		int soma = 0; // elemento neutro da soma
+		if (k == 0) { // caso base
+			// nao faz nada porque soma ja guarda o valro a ser retornado
+		} else {
 			soma = k + somaRecursiva(k - 1);
 		}
 		return soma;
 	}
 
-	//verifica se uma sequencia eh um apalindrome sem recursao
-	public boolean isPalindrome(String word){
+	// verifica se uma sequencia eh um apalindrome sem recursao
+	public boolean isPalindrome(String word) {
 		boolean palindrome = true;
-		//varre a string do inicio ate a metade vendo se 
-		//caracteres equidistantes sao iguais
+		// varre a string do inicio ate a metade vendo se
+		// caracteres equidistantes sao iguais
 		int i = 0;
-		while(i < word.length()/2 && palindrome){
+		while (i < word.length() / 2 && palindrome) {
 			palindrome = word.charAt(i) == word.charAt(word.length() - i);
 			i++;
 		}
 		return palindrome;
 	}
-	//verifica se uma sequencia eh um apalindrome com recursao
-	public boolean isPalindromeRecursive(String word){
+
+	// verifica se uma sequencia eh um apalindrome com recursao
+	public boolean isPalindromeRecursive(String word) {
 		boolean palindrome = true;
-		//caso base: se word é vazio ou tem apenas 1 elemento entao eh palindrome
-		if(word.equals("") || word.length()==1){
-			//nao faz nada porque palindrome ja eh true;
-		}else{
-		//caso recursivo: verifica a primeira e ultima letras e continua verificando 
-		//o restante da string (sem a primeira e a ultima)
-			palindrome = word.charAt(0) == word.charAt(word.length()-1)
-					&& isPalindromeRecursive(word.substring(1,word.length()-1));
-			//note que o codigo acima ainda pode ser otimizado
+		// caso base: se word é vazio ou tem apenas 1 elemento entao eh palindrome
+		if (word.equals("") || word.length() == 1) {
+			// nao faz nada porque palindrome ja eh true;
+		} else {
+			// caso recursivo: verifica a primeira e ultima letras e continua verificando
+			// o restante da string (sem a primeira e a ultima)
+			palindrome = word.charAt(0) == word.charAt(word.length() - 1)
+					&& isPalindromeRecursive(word.substring(1, word.length() - 1));
+			// note que o codigo acima ainda pode ser otimizado
 		}
 		return palindrome;
 	}
-	
+
 	// tail recursion
 	/*
 	 * Inverter uma string sem usar tail recursion
@@ -138,20 +140,20 @@ public class ExemplosRecursao {
 	}
 
 	/**
-	 * Geralmente é possivel converter recursao sem tail recursion em 
+	 * Geralmente é possivel converter recursao sem tail recursion em
 	 * recursão usando tail recursion. Isso normalmente requer um metodo
-	 * auxiliar. 
+	 * auxiliar.
 	 */
 	public String reverseString(String word) {
-		if (word == null){
+		if (word == null) {
 			return word;
 		}
-		return tailReverse(word, ""); 
+		return tailReverse(word, "");
 	}
 
-	//res vai acumlando a resposta a ser retornada
+	// res vai acumlando a resposta a ser retornada
 	public String tailReverse(String word, String res) {
-		if (word.equals("")) 
+		if (word.equals(""))
 			return res;
 		else
 			return tailReverse(word.substring(1), word.charAt(0) + res);
@@ -169,6 +171,5 @@ public class ExemplosRecursao {
 		}
 	}
 	// verificar se é uma palindrome
-
 
 }

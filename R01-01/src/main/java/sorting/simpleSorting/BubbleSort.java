@@ -7,6 +7,7 @@ import sorting.AbstractSorting;
  * elements to the right by swapping adjacent elements, until the array is
  * sorted.
  */
+
 public class BubbleSort<T extends Comparable<T>> extends AbstractSorting<T> {
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {

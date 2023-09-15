@@ -7,3 +7,13 @@
   <level>FINE</level>
   <message>File 122110481-KAYKY FIDELIS SERAFIM.zip was received. It was sent by KAYKY FIDELIS SERAFIM from IP 150.165.42.138 at 15-09-2023 11*35*24</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-09-15T17:48:33.788-0300</date>
+  <logger>KAYKY FIDELIS SERAFIM</logger>
+  <level>FINE</level>
+  <message>File 122110481-KAYKY FIDELIS SERAFIM.zip was received. It was sent by KAYKY FIDELIS SERAFIM from IP 192.168.1.101 at 15-09-2023 17*48*33</message>
+</record>

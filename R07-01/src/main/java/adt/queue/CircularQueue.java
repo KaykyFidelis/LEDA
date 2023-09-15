@@ -20,7 +20,7 @@ public class CircularQueue<T> implements Queue<T> {
 		if (isFull()) {
 			throw new QueueOverflowException();
 		}
-		//Aplica o mod, para que o tail seja resetado caso chegue no fim do array
+		// Aplica o mod, para que o tail seja resetado caso chegue no fim do array
 		array[++tail % array.length] = element;
 		elements++;
 	}
@@ -32,7 +32,7 @@ public class CircularQueue<T> implements Queue<T> {
 		}
 		elements--;
 		T frente = head();
-		array[++head % array.length] = null;
+		array[head++ % array.length] = null;
 		return frente;
 	}
 

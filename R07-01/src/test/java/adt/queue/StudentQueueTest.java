@@ -2,6 +2,7 @@ package adt.queue;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Assert;
@@ -31,9 +32,9 @@ public class StudentQueueTest {
 	}
 
 	private void getImplementations() {
-		queue1 = new QueueUsingStack<Integer>(4);
-		queue2 = new QueueUsingStack<Integer>(2);
-		queue3 = new QueueUsingStack<Integer>(4);
+		queue1 = new CircularQueue<Integer>(4);
+		queue2 = new CircularQueue<Integer>(2);
+		queue3 = new CircularQueue<Integer>(4);
 	}
 
 	// MÉTODOS DE TESTE

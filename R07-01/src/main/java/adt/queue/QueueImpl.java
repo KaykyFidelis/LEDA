@@ -14,7 +14,7 @@ public class QueueImpl<T> implements Queue<T> {
 	@Override
 	public T head() {
 		T retorno = null;
-		if (tail != -1){
+		if (tail != -1) {
 			retorno = array[0];
 		}
 		return retorno;
@@ -23,7 +23,7 @@ public class QueueImpl<T> implements Queue<T> {
 	@Override
 	public boolean isEmpty() {
 		boolean retorno = false;
-		if (tail == -1){
+		if (tail == -1) {
 			retorno = true;
 		}
 		return retorno;
@@ -32,17 +32,17 @@ public class QueueImpl<T> implements Queue<T> {
 	@Override
 	public boolean isFull() {
 		boolean retorno = false;
-		if (tail == array.length - 1){
+		if (tail == array.length - 1) {
 			retorno = true;
 		}
 		return retorno;
 	}
 
 	private void shiftLeft() {
-		array[tail] = null;
-		for (int i = 0; i < tail - 1; i++){
+		for (int i = 0; i < tail; i++) {
 			array[i] = array[i + 1];
 		}
+		array[tail] = null;
 	}
 
 	@Override
@@ -55,10 +55,10 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		if (isEmpty()){
+		if (isEmpty()) {
 			throw new QueueUnderflowException();
 		}
-		T frente = head();
+		T frente = array[0];
 		shiftLeft();
 		tail--;
 		return frente;

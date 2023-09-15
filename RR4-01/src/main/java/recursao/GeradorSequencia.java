@@ -1,6 +1,7 @@
 package recursao;
 
 public class GeradorSequencia {
+
 	public void geraSequencia1(int n) {
 		if (n == 0) {
 			System.out.print(n + " ");

@@ -23,5 +23,6 @@ public interface KLargest<T extends Comparable<T>> {
 	 * 
 	 * @author campelo and adalberto
 	 */
+	
 	public T[] getKLargest(T[] array, int k);
 }

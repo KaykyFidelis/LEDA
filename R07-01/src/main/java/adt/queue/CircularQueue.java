@@ -20,19 +20,28 @@ public class CircularQueue<T> implements Queue<T> {
 		if (isFull()) {
 			throw new QueueOverflowException();
 		}
+		//Aplica o mod, para que o tail seja resetado caso chegue no fim do array
 		array[++tail % array.length] = element;
+		elements++;
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (isEmpty()) {
+			throw new QueueUnderflowException();
+		}
+		elements--;
+		T frente = head();
+		array[++head % array.length] = null;
+		return frente;
 	}
 
 	@Override
 	public T head() {
 		T retorno = null;
-		if (head != -1) {
+		if (head == -1 && elements > 0) {
+			retorno = array[++head];
+		} else if (head != -1) {
 			retorno = array[head];
 		}
 		return retorno;
@@ -41,7 +50,7 @@ public class CircularQueue<T> implements Queue<T> {
 	@Override
 	public boolean isEmpty() {
 		boolean retorno = false;
-		if (elements != 0) {
+		if (elements == 0) {
 			retorno = true;
 		}
 		return retorno;
@@ -50,7 +59,7 @@ public class CircularQueue<T> implements Queue<T> {
 	@Override
 	public boolean isFull() {
 		boolean retorno = false;
-		if (elements == array.length - 1) {
+		if (elements == array.length) {
 			retorno = true;
 		}
 		return retorno;

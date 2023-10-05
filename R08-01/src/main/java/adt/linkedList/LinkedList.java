@@ -18,7 +18,7 @@ public interface LinkedList<T> {
 	 * Searches for a given element in the list.
 	 * 
 	 * @param element
-	 *            the element being searched for
+	 *                the element being searched for
 	 * @return the element if it is in the list or null, otherwise
 	 */
 	public T search(T element);
@@ -28,7 +28,7 @@ public interface LinkedList<T> {
 	 * ignored.
 	 * 
 	 * @param element
-	 *            the element to be inserted
+	 *                the element to be inserted
 	 */
 	public void insert(T element);
 
@@ -37,7 +37,7 @@ public interface LinkedList<T> {
 	 * is not changed.
 	 * 
 	 * @param element
-	 *            the element to be removed
+	 *                the element to be removed
 	 */
 	public void remove(T element);
 

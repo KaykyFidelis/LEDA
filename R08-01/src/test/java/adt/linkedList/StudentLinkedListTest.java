@@ -22,8 +22,8 @@ public class StudentLinkedListTest {
 	}
 
 	private void getImplementations() {
-		lista1 = new RecursiveSingleLinkedListImpl<Integer>();
-		lista2 = new RecursiveSingleLinkedListImpl<Integer>();
+		lista1 = new SpecialLinkedListImpl<Integer>();
+		lista2 = new SpecialLinkedListImpl<Integer>();
 	}
 
 	@Test
@@ -71,5 +71,11 @@ public class StudentLinkedListTest {
 	public void testToArray() {
 		Assert.assertArrayEquals(new Integer[] {}, lista2.toArray());
 		Assert.assertArrayEquals(new Integer[] { 3, 2, 1 }, lista1.toArray());
+	}
+
+	@Test
+	public void testSwap() {
+		((SpecialLinkedListImpl<Integer>) lista1).swap(new Integer(1), new Integer(3));
+		Assert.assertArrayEquals(new Integer[] { 1, 2, 3 }, lista1.toArray());
 	}
 }

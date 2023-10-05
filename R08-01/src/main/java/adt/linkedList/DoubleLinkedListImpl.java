@@ -31,7 +31,7 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 	public void insertFirst(T element) {
 		if (!element.equals(null)) {
 			if (getHead().isNIL()) {
-				DoubleLinkedListNode<T> newNode = new DoubleLinkedListNode<>(element, getLast(),
+				DoubleLinkedListNode<T> newNode = new DoubleLinkedListNode<T>(element, getLast(),
 						((DoubleLinkedListNode<T>) getHead()));
 				setLast(newNode);
 				setHead(newNode);

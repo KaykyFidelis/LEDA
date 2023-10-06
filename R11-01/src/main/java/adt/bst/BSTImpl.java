@@ -19,8 +19,11 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 
 	@Override
 	public int height() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int height = -1;
+		if (size() != 0){
+			height = size();
+		}
+		return height;
 	}
 
 	@Override
@@ -31,8 +34,23 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (element != null){
+			insert(root, element);
+		}
+	}
+
+	private void insert(BSTNode<T> node, T element){
+		if (node.isEmpty()){
+			node.setData(element);
+			node.setLeft(new BSTNode<T>());
+			node.getLeft().setParent(node);
+			node.setRight(new BSTNode<T>());
+			node.getRight().setParent(node);
+		} else if (node.getData().compareTo(element) > 0) {
+			insert((BSTNode<T>) node.getLeft(), element);
+		} else {
+			insert((BSTNode<T>) node.getRight(), element);
+		}
 	}
 
 	@Override
@@ -71,10 +89,16 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 		throw new UnsupportedOperationException("Not implemented yet!");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T[] order() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T[] lista = (T[]) new Comparable[size()];
+		if(!isEmpty()){
+			for (int i = 0; i < lista.length; i++) {
+				
+			}
+		}
+		return lista;
 	}
 
 	@Override

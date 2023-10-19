@@ -116,26 +116,18 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 		if (!search(element).isEmpty()) {
 			retorno = search(element);
 			if (!retorno.getRight().isEmpty()) {
-				retorno = sucessor1((BSTNode<T>) retorno.getRight());
+				retorno = minimum((BSTNode<T>) retorno.getRight());
 			} else {
-				retorno = sucessor2(retorno, element);
+				retorno = sucessor(retorno, element);
 			}
 		}
 		return retorno;
 	}
 
-	private BSTNode<T> sucessor1(BSTNode<T> node) {
-		BSTNode<T> retorno = node;
-		if (!node.getLeft().isEmpty()) {
-			retorno = sucessor1((BSTNode<T>) node.getLeft());
-		}
-		return retorno;
-	}
-
-	private BSTNode<T> sucessor2(BSTNode<T> node, T element) {
+	private BSTNode<T> sucessor(BSTNode<T> node, T element) {
 		BSTNode<T> parent = (BSTNode<T>) node.getParent();
 		if (parent != null && parent.getData().compareTo(node.getData()) < 0) {
-			parent = sucessor2(parent, element);
+			parent = sucessor(parent, element);
 		}
 		return parent;
 	}
@@ -146,26 +138,18 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 		if (!search(element).isEmpty()) {
 			retorno = search(element);
 			if (!retorno.getLeft().isEmpty()) {
-				retorno = predecessor1((BSTNode<T>) retorno.getLeft());
+				retorno = maximum((BSTNode<T>) retorno.getLeft());
 			} else {
-				retorno = predecessor2(retorno, element);
+				retorno = predecessor(retorno, element);
 			}
 		}
 		return retorno;
 	}
 
-	private BSTNode<T> predecessor1(BSTNode<T> node) {
-		BSTNode<T> retorno = node;
-		if (!node.getRight().isEmpty()) {
-			retorno = predecessor1((BSTNode<T>) node.getRight());
-		}
-		return retorno;
-	}
-
-	private BSTNode<T> predecessor2(BSTNode<T> node, T element) {
+	private BSTNode<T> predecessor(BSTNode<T> node, T element) {
 		BSTNode<T> parent = (BSTNode<T>) node.getParent();
 		if (parent != null && parent.getData().compareTo(node.getData()) > 0) {
-			parent = predecessor2(parent, element);
+			parent = predecessor(parent, element);
 		}
 		return parent;
 	}

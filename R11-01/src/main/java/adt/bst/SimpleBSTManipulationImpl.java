@@ -9,15 +9,15 @@ package adt.bst;
  */
 public class SimpleBSTManipulationImpl<T extends Comparable<T>> implements SimpleBSTManipulation<T> {
 
-	public static void main(String[] args) {
-
-	}
-
 	@Override
 	public boolean equals(BST<T> tree1, BST<T> tree2) {
-		BSTNode<T> nodeT1 = (BSTNode<T>) tree1.getRoot();
-		BSTNode<T> nodeT2 = (BSTNode<T>) tree2.getRoot();
-		return equals(nodeT1, nodeT2);
+		boolean retorno = false;
+		if (tree1 != null && tree2 != null) {
+			BSTNode<T> nodeT1 = (BSTNode<T>) tree1.getRoot();
+			BSTNode<T> nodeT2 = (BSTNode<T>) tree2.getRoot();
+			retorno = equals(nodeT1, nodeT2);
+		}
+		return retorno;
 	}
 
 	private boolean equals(BSTNode<T> nodeT1, BSTNode<T> nodeT2) {
@@ -25,18 +25,24 @@ public class SimpleBSTManipulationImpl<T extends Comparable<T>> implements Simpl
 		if (nodeT1.equals(nodeT2)) {
 			retorno = true;
 		}
-		if (!nodeT1.isEmpty() && !nodeT2.isEmpty()) {
-			retorno = equals((BSTNode<T>) nodeT1.getLeft(), (BSTNode<T>) nodeT2.getLeft())
-					&& equals((BSTNode<T>) nodeT1.getRight(), (BSTNode<T>) nodeT2.getRight());
+		if (retorno == true) {
+			if (!nodeT1.isEmpty() && !nodeT2.isEmpty()) {
+				retorno = equals((BSTNode<T>) nodeT1.getLeft(), (BSTNode<T>) nodeT2.getLeft())
+						&& equals((BSTNode<T>) nodeT1.getRight(), (BSTNode<T>) nodeT2.getRight());
+			}
 		}
 		return retorno;
 	}
 
 	@Override
 	public boolean isSimilar(BST<T> tree1, BST<T> tree2) {
-		BSTNode<T> nodeT1 = (BSTNode<T>) tree1.getRoot();
-		BSTNode<T> nodeT2 = (BSTNode<T>) tree2.getRoot();
-		return isSimilar(nodeT1, nodeT2);
+		boolean retorno = false;
+		if (tree1 != null && tree2 != null) {
+			BSTNode<T> nodeT1 = (BSTNode<T>) tree1.getRoot();
+			BSTNode<T> nodeT2 = (BSTNode<T>) tree2.getRoot();
+			retorno = isSimilar(nodeT1, nodeT2);
+		}
+		return retorno;
 	}
 
 	private boolean isSimilar(BSTNode<T> nodeT1, BSTNode<T> nodeT2) {

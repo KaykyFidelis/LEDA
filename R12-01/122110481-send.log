@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-20T00:07:52.814-0300</date>
+  <logger>KAYKY FIDELIS SERAFIM</logger>
+  <level>FINE</level>
+  <message>File 122110481-KAYKY FIDELIS SERAFIM.zip was received. It was sent by KAYKY FIDELIS SERAFIM from IP 172.20.128.1 at 20-10-2023 00*07*52</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-20T02:36:18.381-0300</date>
+  <logger>KAYKY FIDELIS SERAFIM</logger>
+  <level>FINE</level>
+  <message>File 122110481-KAYKY FIDELIS SERAFIM.zip was received. It was sent by KAYKY FIDELIS SERAFIM from IP 172.20.128.1 at 20-10-2023 02*36*18</message>
+</record>

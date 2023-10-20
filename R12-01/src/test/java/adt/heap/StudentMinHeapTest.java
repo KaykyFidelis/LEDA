@@ -20,7 +20,7 @@ public class StudentMinHeapTest {
 		// TODO Instancie seu comparator para fazer sua estrutura funcionar como
 		// uma min heap aqui. Use instanciacao anonima da interface
 		// Comparator!!!!
-		Comparator<Integer> comparator = null;
+		Comparator<Integer> comparator = new ComparatorMinHeap<Integer>();
 		heap = new HeapImpl<Integer>(comparator);
 	}
 
@@ -30,7 +30,7 @@ public class StudentMinHeapTest {
 
 		assertEquals(8, heap.size());
 		assertFalse(heap.isEmpty());
-		//verifyHeap(new Integer[] { 1, 6, 58, 12, 34, 64, 99, 82 });
+		// verifyHeap(new Integer[] { 1, 6, 58, 12, 34, 64, 99, 82 });
 		verifyHeap(new Integer[] { 1, 6, 58, 12, 34, 99, 64, 82 });
 	}
 

@@ -26,9 +26,9 @@ public class OrderStatisticsHeapImpl<T extends Comparable<T>> implements OrderSt
 			PriorityQueue<T> heap = new PriorityQueue<T>();
 			for (T element : array) {
 				heap.add(element);
-				if (heap.size() > k) {
-					heap.poll();
-				}
+			}
+			for (int i = array.length - k; i > 0; i--) {
+				heap.poll();
 			}
 			retorno = heap.peek();
 		}

@@ -157,12 +157,15 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 		if (array.length >= 2) {
 			buildHeap(array);
 
-			if (rootElement().compareTo(heap[index]) > 0)
-				for (int i = index; i >= 0; i--)
+			if (rootElement().compareTo(heap[index]) > 0) {
+				for (int i = index; i >= 0; i--) {
 					array[i] = extractRootElement();
-			else
-				for (int i = 0; i < array.length; i++)
+				}
+			} else {
+				for (int i = 0; i < array.length; i++) {
 					array[i] = extractRootElement();
+				}
+			}
 		}
 		return array;
 	}

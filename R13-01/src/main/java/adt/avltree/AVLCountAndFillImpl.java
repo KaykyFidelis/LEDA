@@ -41,9 +41,11 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 
 	@Override
 	public void fillWithoutRebalance(T[] array) {
-		BSTImpl<T> bst1 = new BSTImpl<T>();
+		BSTImpl<T> bst1 = new BSTImpl<>();
 		T[] arrayBST = order();
 
+		//Esse 'for' serve para verificar o caso em que tenha sido adicionado algum elemento na AVL antes de chamar o fillWithoutRebalance.
+		//Caso esse teste não seja feito, o for não vai entrar, sendo assim, não consumirá tempo de execução :)
 		for (int i = 0; i < arrayBST.length; i++) {
 			bst1.insert(arrayBST[i]);
 		}

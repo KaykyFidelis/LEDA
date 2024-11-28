@@ -1,27 +1,30 @@
 import os
 import sys
-import concurrent.futures
+from threading import Thread
 
-def read_file(directory_path, file_name):
+def read_file(directory_path, file_path):
     ''' A thread é criada antes da leitura do arquivo para deixar o processo de leitura mais rápido.
         Sendo assim, cada thread se responsabiliza por cuidar de um arquivo e processa a leitura e só então a escrita'''
 
-    file_path = os.path.join(directory_path, file_name)
     if os.path.isfile(file_path):
         with open(file_path, 'r') as file:
             passwords = [line.strip() for line in file.readlines()]
     process_file_and_write(file_path, file_path, passwords)
 
 def read_passwords_from_dir(directory: str) -> dict:
+    all_threads = []
     try:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
-            futures = {executor.submit(read_file, directory, file_name): file_name for file_name in os.listdir(directory)}
-            for future in concurrent.futures.as_completed(futures):
-                future.result()
+        for file_name in os.listdir(directory):
+            file_path = os.path.join(directory, file_name)
+            thread = Thread(target=read_file, args=(directory, file_path))
+            thread.start()
+            all_threads.append(thread)
     except FileNotFoundError:
         print(f"Erro: Diretório não encontrado no caminho {directory}.")
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
+
+    [thread.join() for thread in all_threads]
 
 def rot13_obfuscation(password: str) -> str:
     return "".join(
